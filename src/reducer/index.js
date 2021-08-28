@@ -2,6 +2,7 @@ import { GET_CITY, GET_CURRENT_CITY, GET_NEW_CITY, GET_REMOVE_CITY } from "../ac
 
 const inicialState = {
     city: {},
+    currentCity: {},
     cities : []
 }
 
@@ -25,7 +26,7 @@ function RootReducer(state = inicialState, action){
         case GET_CURRENT_CITY:
             return {
                 ...state,
-                city: action.payload
+                currentCity: action.payload
             }
         default:
             return state

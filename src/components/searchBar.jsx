@@ -6,8 +6,25 @@ import Card from './Card';
 
 const Div = styled.div`
     padding: 7% 4%;
-    width: 70%;
+    width: 80%;
     height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    @media (max-width: 800px) {
+        width: 100%;
+    }
+`;
+
+const DivCards = styled.div`
+    justify-content: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    @media (max-width: 800px) {
+        flex-direction: column;
+    }
 `;
 
 const Input = styled.input`
@@ -16,6 +33,9 @@ const Input = styled.input`
     background-color: white;
     border: none;
     margin-bottom: 7%;
+    box-sizing: border-box;
+    padding: 2% 4%;
+    font-size: 18px;
 `;
 
 const SearchBar = () => {
@@ -37,10 +57,10 @@ const SearchBar = () => {
         <Div>
             <div>
                 <form onSubmit={onHandleSubmit}>
-                    <Input type="text" name="search" onChange={(event) => onHandleChange(event)} value={search} />
+                    <Input type="text" name="search" placeholder="Search other cities..." onChange={(event) => onHandleChange(event)} value={search} />
                 </form>
             </div>
-            <div>
+            <DivCards>
                 {cities && cities.map( city => {
                     return (
                         <Card 
@@ -54,7 +74,7 @@ const SearchBar = () => {
                         />
                     )
                 })}
-            </div>
+            </DivCards>
         </Div>
     )
 }
