@@ -37,9 +37,10 @@ export const getRemoveCity = (id) => {
     }
 }
 
-export const getCurrentCity = (location) => {
+export const getCurrentCity = (city) => {
     return async (dispatch) => {
-        const res = axios.get(`${api}/weather?lat=${location.lat}&lon=${location.lon}&appid=${apiKey}`);
+        const res = await axios.get(`${api}/weather?q=${city}&appid=${apiKey}`);
+        console.log(res);
         dispatch({
             type: GET_CURRENT_CITY,
             payload: res.data
